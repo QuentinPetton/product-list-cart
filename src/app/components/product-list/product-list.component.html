@@ -1,0 +1,12 @@
+<p>product-list works!</p>
+
+<h1>Desserts</h1>
+
+<div>
+  <ul>
+    @for (product of products(); track product.name) {
+      <li class="{{product.name}}"></li>
+    }
+  </ul>
+
+</div>
