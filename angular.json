@@ -28,6 +28,7 @@
               }
             ],
             "styles": [
+              "src/reset.css",
               "src/styles.css"
             ],
             "scripts": []

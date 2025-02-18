@@ -1,12 +1,8 @@
-<p>product-list works!</p>
-
 <h1>Desserts</h1>
 
-<div>
-  <ul>
-    @for (product of products(); track product.name) {
-      <li class="{{product.name}}"></li>
-    }
-  </ul>
-
+<div class="product-list">
+  @for (product of products(); track product.name) {
+    <app-product-cart>[product
+      ] </app-product-cart>
+  }
 </div>
