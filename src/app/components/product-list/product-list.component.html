@@ -1,0 +1,8 @@
+<h1>Desserts</h1>
+
+<div class="product-list">
+  @for (product of products(); track product.name) {
+    <app-product-cart>[product
+      ] </app-product-cart>
+  }
+</div>
