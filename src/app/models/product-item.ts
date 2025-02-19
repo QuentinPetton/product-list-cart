@@ -1,6 +1,6 @@
 export interface ProductItem {
   image: {
-    thunbnail: string;
+    thumbnail: string;
     mobile: string;
     tablet: string;
     desktop: string;
