@@ -6,29 +6,26 @@
     <span>Your added items will appear here</span>
   } @else {
     @for (cartItem of cartItems(); track cartItem.name) {
-
-      <div>
+      <div class="cart-item">
         <span class="name">{{cartItem.name}}</span>
-        <div>
-          <span>quantité x</span>
-          <span>total</span>
+        <div class="cart-item-details">
+          <span>99x</span>
+          <span>&#64; $total</span>
           <span class="price">${{cartItem.price | number:'1.2-2' }}</span>
         </div>
-        <button>
+        <button class="remove-button">
           <img src="../../../assets/images/icon-remove-item.svg" alt="Remove to Cart Icon">
         </button>
       </div>
-
-      <div>
+      <div class="total-amount">
         <span>Order Total</span>
-        <span>$$</span>
+        <span>$99</span>
       </div>
-      <div>
+      <div class="carbon-info">
         <img src="../../../assets/images/icon-carbon-neutral.svg" alt="Icon of Tree">
-        <span>This is a <strong>carbon-neutral</strong>delivert</span>
-        <button>Confirm Order</button>
+        <span>This is a <strong>carbon-neutral</strong> delivery</span>
       </div>
+      <button class="confirm">Confirm Order</button>
     }
   }
-
 </section>
