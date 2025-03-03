@@ -1,0 +1,33 @@
+<div class="modal-overlay">
+
+
+<div class="modal-container">
+  <img src="../../../assets/images/icon-order-confirmed.svg" alt="Verified Order Icon">
+  <h2>Order Confirmed</h2>
+  <p>We hope you enjoy your food !</p>
+  <div class="order-details">
+
+    @for(cartItem of cartItems(); track cartItem.product.name) {
+      <div class="cart-item">
+        <img [src]="cartItem.product.image.thumbnail" alt="Picture of {{cartItem.product.name}}">
+        <div class="cart-item-details">
+          <span class="name">{{cartItem.product.name}}</span>
+          <div>
+            <span class="quantity">{{cartItem.quantity}}x</span>
+            <span class="total-price">&#64; ${{cartItem.totalPrice | number:'1.2-2'}}</span>
+          </div>
+        </div>
+        <span class="price">${{cartItem.product.price | number:'1.2-2' }}</span>
+      </div>
+      }
+
+    <div class="total-amount">
+      <span>Order Total</span>
+      <span>${{cartTotalPrice() | number:'1.2-2' }}</span>
+    </div>
+  </div>
+  <button
+    (click)="closeModal()"
+     class="confirm">Start New order</button>
+
+</div>
