@@ -1,9 +1,14 @@
-<h1>Desserts</h1>
 
-<div class="product-list">
+<div class="product-container">
+  <div class="product-list">
+  <h1>Desserts</h1>
   @for (product of products(); track product.name) {
     <app-product-cart [product]="product" (addToCart)="handleAddToCartButton($event)"></app-product-cart>
   }
 </div>
 
-<app-cart [cartItems]="cartItems()" (removeFromCart)="removeFromCart($event)" (resetCart)="resetCart()"></app-cart>
+<div class="cart-container">
+  <app-cart [cartItems]="cartItems()" (removeFromCart)="removeFromCart($event)" (resetCart)="resetCart()"></app-cart>
+</div>
+
+</div>
