@@ -28,6 +28,15 @@
       <img src="../../../assets/images/icon-carbon-neutral.svg" alt="Icon of Tree">
       <span>This is a <strong>carbon-neutral</strong> delivery</span>
     </div>
-    <button class="confirm">Confirm Order</button>
+    <button
+    (click)="openOrderModal()"
+     class="confirm">Confirm Order</button>
+  }
+  @if (isOrderModalOpen()) {
+    <app-confirm-order-modal
+    [cartItems]="itemDetails()"
+    [cartTotalPrice]="cartTotalPrice()"
+    (closeOrderModal)="closeOrderModal()"
+    ></app-confirm-order-modal>
   }
 </section>

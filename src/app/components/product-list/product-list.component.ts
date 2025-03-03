@@ -33,4 +33,7 @@ export class ProductListComponent {
       return values.filter(item => item.name !== product.name)
     })
   }
+  resetCart() {
+    this.cartItems.set([]);
+  }
 }
