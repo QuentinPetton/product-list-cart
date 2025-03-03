@@ -6,4 +6,4 @@
   }
 </div>
 
-<app-cart [cartItems]="cartItems()"></app-cart>
+<app-cart [cartItems]="cartItems()" (removeFromCart)="removeFromCart($event)"></app-cart>

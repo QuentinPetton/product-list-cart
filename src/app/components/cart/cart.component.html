@@ -13,19 +13,21 @@
           <span>&#64; $total</span>
           <span class="price">${{cartItem.price | number:'1.2-2' }}</span>
         </div>
-        <button class="remove-button">
+        <button
+        (click)="removeItemFromCart(cartItem)"
+         class="remove-button">
           <img src="../../../assets/images/icon-remove-item.svg" alt="Remove to Cart Icon">
         </button>
       </div>
-      <div class="total-amount">
-        <span>Order Total</span>
-        <span>$99</span>
-      </div>
-      <div class="carbon-info">
-        <img src="../../../assets/images/icon-carbon-neutral.svg" alt="Icon of Tree">
-        <span>This is a <strong>carbon-neutral</strong> delivery</span>
-      </div>
-      <button class="confirm">Confirm Order</button>
     }
+    <div class="total-amount">
+      <span>Order Total</span>
+      <span>$99</span>
+    </div>
+    <div class="carbon-info">
+      <img src="../../../assets/images/icon-carbon-neutral.svg" alt="Icon of Tree">
+      <span>This is a <strong>carbon-neutral</strong> delivery</span>
+    </div>
+    <button class="confirm">Confirm Order</button>
   }
 </section>

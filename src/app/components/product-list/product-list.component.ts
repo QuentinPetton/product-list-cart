@@ -28,4 +28,9 @@ export class ProductListComponent {
     console.log('Produit ajouté', product)
 
   }
+  removeFromCart(product: ProductItem) {
+    this.cartItems.update(values => {
+      return values.filter(item => item.name !== product.name)
+    })
+  }
 }

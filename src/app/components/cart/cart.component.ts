@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { ProductItem } from '../../models/product-item';
 import { DecimalPipe } from '@angular/common';
 
@@ -12,5 +12,16 @@ import { DecimalPipe } from '@angular/common';
 export class CartComponent {
   // on reçoit les products du panier
   readonly cartItems = input<ProductItem[]>();
+
+  readonly removeFromCart = output<ProductItem>();
+  // Gestion du retrait de l'item du panier
+  removeItemFromCart(product: ProductItem) {
+    console.log('Produit retiré', product)
+   // On retire l'item du panier et on notifie le parent
+   this.removeFromCart.emit(product);
+
+
+
+  }
 
 }
