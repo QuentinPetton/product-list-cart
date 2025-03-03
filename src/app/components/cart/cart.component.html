@@ -1,20 +1,20 @@
 
 <section class="cart-container">
-  <h2>Your Cart (total)</h2>
+  <h2>Your Cart ({{cartItems()?.length}})</h2>
   @if (cartItems()?.length===0) {
     <img src="../../../assets/images/illustration-empty-cart.svg" alt="illustration of cake">
     <span>Your added items will appear here</span>
   } @else {
-    @for (cartItem of cartItems(); track cartItem.name) {
+    @for (cartItem of itemDetails(); track cartItem.product.name) {
       <div class="cart-item">
-        <span class="name">{{cartItem.name}}</span>
+        <span class="name">{{cartItem.product.name}}</span>
         <div class="cart-item-details">
-          <span>99x</span>
-          <span>&#64; $total</span>
-          <span class="price">${{cartItem.price | number:'1.2-2' }}</span>
+          <span>{{cartItem.quantity}}x</span>
+          <span>&#64; ${{cartItem.totalPrice | number:'1.2-2'}}</span>
+          <span class="price">${{cartItem.product.price | number:'1.2-2' }}</span>
         </div>
         <button
-        (click)="removeItemFromCart(cartItem)"
+        (click)="removeItemFromCart(cartItem.product)"
          class="remove-button">
           <img src="../../../assets/images/icon-remove-item.svg" alt="Remove to Cart Icon">
         </button>
@@ -22,7 +22,7 @@
     }
     <div class="total-amount">
       <span>Order Total</span>
-      <span>$99</span>
+      <span>${{cartTotalPrice() | number:'1.2-2' }}</span>
     </div>
     <div class="carbon-info">
       <img src="../../../assets/images/icon-carbon-neutral.svg" alt="Icon of Tree">

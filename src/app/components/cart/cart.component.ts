@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 import { ProductItem } from '../../models/product-item';
 import { DecimalPipe } from '@angular/common';
 
@@ -10,18 +10,30 @@ import { DecimalPipe } from '@angular/common';
   standalone: true
 })
 export class CartComponent {
-  // on reçoit les products du panier
   readonly cartItems = input<ProductItem[]>();
-
   readonly removeFromCart = output<ProductItem>();
-  // Gestion du retrait de l'item du panier
-  removeItemFromCart(product: ProductItem) {
-    console.log('Produit retiré', product)
-   // On retire l'item du panier et on notifie le parent
-   this.removeFromCart.emit(product);
-
-
-
+  // Gestion des quantités par items et prix
+  readonly itemDetails = computed(() => {
+  const itemsWithPriceAndQuantity = new Map<string, {product:ProductItem; quantity: number; totalPrice: number }>();
+    const cartItems = this.cartItems();
+    if (!cartItems) return [];
+    for (const item of cartItems) {
+      if(itemsWithPriceAndQuantity.has(item.name)) {
+        const itemAlreadyInCart = itemsWithPriceAndQuantity.get(item.name)!;
+        itemAlreadyInCart.quantity++;
+        itemAlreadyInCart!.totalPrice += item.price;
+      } else {
+      itemsWithPriceAndQuantity.set(item.name, {product: item, quantity: 1, totalPrice: item.price});
+    }
   }
+  return Array.from(itemsWithPriceAndQuantity.values());
+  })
+  removeItemFromCart(product: ProductItem) {
+   this.removeFromCart.emit(product);
+  }
+  readonly cartTotalPrice = computed(() => {
+  return this.itemDetails().reduce((total, item) => total + item.totalPrice, 0);
+  });
+
 
 }
