@@ -2,6 +2,8 @@
 
 <div class="product-list">
   @for (product of products(); track product.name) {
-    <app-product-cart [product]="product" ></app-product-cart>
+    <app-product-cart [product]="product" (addToCart)="handleAddToCartButton($event)"></app-product-cart>
   }
 </div>
+
+<app-cart [cartItems]="cartItems()" (removeFromCart)="removeFromCart($event)"></app-cart>
