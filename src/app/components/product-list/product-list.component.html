@@ -6,9 +6,7 @@
     <app-product-cart [product]="product" (addToCart)="handleAddToCartButton($event)"></app-product-cart>
   }
 </div>
-
 <div class="cart-container">
   <app-cart [cartItems]="cartItems()" (removeFromCart)="removeFromCart($event)" (resetCart)="resetCart()"></app-cart>
 </div>
-
 </div>
